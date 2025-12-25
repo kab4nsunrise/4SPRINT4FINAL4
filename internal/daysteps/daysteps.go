@@ -23,17 +23,17 @@ func parsePackage(data string) (int, time.Duration, error) {
 		return 0, 0, errors.New("неверный формат данных")
 	}
 
-	steps, err := strconv.Atoi(strings.TrimSpace(parts[0]))
+	steps, err := strconv.Atoi(parts[0])
 	if err != nil || steps <= 0 {
 		return 0, 0, errors.New("неверное количество шагов")
 	}
 
-	duration, err := time.ParseDuration(strings.TrimSpace(parts[1]))
+	duration, err := time.ParseDuration(parts[1])
 	if err != nil {
 		return 0, 0, errors.New("неверная продолжительность")
 	}
 
-	// ТЕСТЫ ТРЕБУЮТ duration > 0
+	
 	if duration <= 0 {
 		return 0, 0, errors.New("некорректная продолжительность")
 	}
